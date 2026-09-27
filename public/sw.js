@@ -1,9 +1,8 @@
-const CACHE_NAME = 'shree-balaji-v1';
+const CACHE_NAME = 'shree-balaji-v2';
 const STATIC_ASSETS = [
   '/',
   '/manifest.json',
   '/offline.html',
-  '/globals.css',
 ];
 
 self.addEventListener('install', (event) => {
@@ -64,7 +63,17 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // For static assets: Stale-While-Revalidate
+  // For external resources (e.g. Unsplash CDN images, fonts): Network-first with cache fallback
+  if (url.origin !== self.location.origin) {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        return caches.match(event.request);
+      })
+    );
+    return;
+  }
+
+  // For same-origin static assets: Stale-While-Revalidate
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       const fetchPromise = fetch(event.request)

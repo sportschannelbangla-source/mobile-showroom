@@ -20,7 +20,7 @@ import {
   Share2,
 } from 'lucide-react';
 import { Product } from '@/lib/types';
-import { formatINR, generateWhatsAppUrl, generateProductWhatsAppMessage } from '@/lib/utils';
+import { formatINR, generateWhatsAppUrl, generateProductWhatsAppMessage, getProductPrimaryImage } from '@/lib/utils';
 import { useCart } from '@/context/CartContext';
 import { useStore } from '@/context/StoreContext';
 import { SafeImage } from '@/components/SafeImage';
@@ -180,10 +180,11 @@ export default function ProductDetailPage() {
             </button>
 
             <SafeImage
-              src={selectedImage || product.images[0]}
+              src={selectedImage || getProductPrimaryImage(product)}
               alt={product.name}
               brand={product.brand}
               category={product.category}
+              priority={true}
               className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
             />
           </div>

@@ -15,6 +15,29 @@ export function calculateDiscount(mrp: number, price: number): number {
   return Math.round(((mrp - price) / mrp) * 100);
 }
 
+/**
+ * Robustly resolve the primary image URL for any product schema variant
+ */
+export function getProductPrimaryImage(product: any): string {
+  if (!product) return '';
+  if (Array.isArray(product.images) && product.images.length > 0 && typeof product.images[0] === 'string') {
+    return product.images[0];
+  }
+  if (typeof product.image === 'string' && product.image.trim()) {
+    return product.image.trim();
+  }
+  if (typeof product.imageUrl === 'string' && product.imageUrl.trim()) {
+    return product.imageUrl.trim();
+  }
+  if (typeof product.image_url === 'string' && product.image_url.trim()) {
+    return product.image_url.trim();
+  }
+  if (typeof product.primary_image === 'string' && product.primary_image.trim()) {
+    return product.primary_image.trim();
+  }
+  return '';
+}
+
 export function generateWhatsAppUrl(phone: string, message: string): string {
   // Clean phone number: remove spaces, dashes, plus sign if already has 91
   const cleanPhone = phone.replace(/[^0-9]/g, '');

@@ -5,16 +5,17 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ShoppingCart, Star, MessageCircle, Zap, Check } from 'lucide-react';
 import { Product } from '@/lib/types';
-import { formatINR, generateWhatsAppUrl, generateProductWhatsAppMessage } from '@/lib/utils';
+import { formatINR, generateWhatsAppUrl, generateProductWhatsAppMessage, getProductPrimaryImage } from '@/lib/utils';
 import { useCart } from '@/context/CartContext';
 import { useStore } from '@/context/StoreContext';
 import { SafeImage } from './SafeImage';
 
 interface ProductCardProps {
   product: Product;
+  priority?: boolean;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, priority = false }: ProductCardProps) {
   const router = useRouter();
   const { addToCart } = useCart();
   const { settings, campaign } = useStore();
@@ -83,10 +84,11 @@ export function ProductCard({ product }: ProductCardProps) {
         className="block relative bg-gray-50/50 aspect-square p-2.5 sm:p-4 overflow-hidden group-hover:bg-amber-50/20 transition-colors"
       >
         <SafeImage
-          src={product.images[0]}
+          src={getProductPrimaryImage(product)}
           alt={product.name}
           brand={product.brand}
           category={product.category}
+          priority={priority}
           className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
         />
       </Link>
