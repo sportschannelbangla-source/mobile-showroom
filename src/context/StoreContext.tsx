@@ -10,6 +10,9 @@ interface StoreContextType {
   categories: Category[];
   refreshData: () => Promise<void>;
   isLoading: boolean;
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (open: boolean) => void;
+  toggleMobileMenu: () => void;
 }
 
 const StoreContext = createContext<StoreContextType>({
@@ -18,6 +21,9 @@ const StoreContext = createContext<StoreContextType>({
   categories: SEED_CATEGORIES,
   refreshData: async () => {},
   isLoading: false,
+  isMobileMenuOpen: false,
+  setIsMobileMenuOpen: () => {},
+  toggleMobileMenu: () => {},
 });
 
 export function StoreProvider({ children }: { children: React.ReactNode }) {
@@ -25,6 +31,9 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   const [campaign, setCampaign] = useState<FestivalCampaign>(INITIAL_CAMPAIGN);
   const [categories, setCategories] = useState<Category[]>(SEED_CATEGORIES);
   const [isLoading, setIsLoading] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
 
   const refreshData = async () => {
     try {
@@ -50,7 +59,18 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <StoreContext.Provider value={{ settings, campaign, categories, refreshData, isLoading }}>
+    <StoreContext.Provider
+      value={{
+        settings,
+        campaign,
+        categories,
+        refreshData,
+        isLoading,
+        isMobileMenuOpen,
+        setIsMobileMenuOpen,
+        toggleMobileMenu,
+      }}
+    >
       {children}
     </StoreContext.Provider>
   );

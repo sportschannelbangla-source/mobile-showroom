@@ -143,7 +143,7 @@ export default function ProductDetailPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-6 space-y-6">
+    <div className="max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-6 pb-28 sm:pb-8 space-y-6">
       {/* 1. Breadcrumbs */}
       <nav className="flex items-center gap-1.5 text-xs text-gray-500 overflow-x-auto no-scrollbar">
         <Link href="/" className="hover:text-brand-600 shrink-0">
