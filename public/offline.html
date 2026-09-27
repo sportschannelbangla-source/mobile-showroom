@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline | Shree Balaji Electronics & Electricals</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #fff7ed;
+      color: #1f2937;
+      text-align: center;
+    }
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 32px 24px;
+      max-width: 400px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.08);
+      border: 1px solid #fed7aa;
+    }
+    .icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      background: #f97316;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 16px;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 8px;
+      color: #9a3412;
+    }
+    p {
+      font-size: 13px;
+      color: #4b5563;
+      line-height: 1.5;
+      margin: 0 0 20px;
+    }
+    .contact {
+      background: #fff7ed;
+      border-radius: 16px;
+      padding: 12px;
+      font-size: 12px;
+      color: #7c2d12;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    button {
+      background: #ea580c;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">⚡</div>
+    <h1>You are Currently Offline</h1>
+    <p>It looks like your internet connection is down. Don't worry, Shree Balaji Electronics PWA is installed on your device.</p>
+    <div class="contact">
+      Need urgent electronics assistance?
+      <br>Call our Showroom: <strong>+91 98765 43210</strong>
+    </div>
+    <button onclick="window.location.reload()">Retry Connection</button>
+  </div>
+</body>
+</html>

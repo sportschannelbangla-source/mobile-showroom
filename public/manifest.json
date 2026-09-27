@@ -1,0 +1,41 @@
+{
+  "name": "Shree Balaji Electronics & Electricals",
+  "short_name": "Shree Balaji",
+  "description": "Premium Electronics & Electrical Retail Store - Durga Puja Mega Sale",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#9a3412",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "electronics", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Durga Puja Deals",
+      "short_name": "Festival Deals",
+      "description": "View festival discounts on electronics",
+      "url": "/search?festival=true",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Track Order",
+      "short_name": "Track Order",
+      "description": "Track your store pickup or home delivery",
+      "url": "/order-tracking",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
